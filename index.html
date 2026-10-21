@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-mask="blue">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Faiq Ajmal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Faiq Ajmal: projects, work, leadership and sports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<!--
+  You don't need to edit this file. All the words on the site are in
+  assets/js/content.js, and the colors and fonts are in assets/css/style.css.
+-->
+<canvas id="board" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top"><span class="mark" id="brand-mark">FA</span><span id="brand-name">Faiq Ajmal</span></a>
+    <div class="masks" role="group" aria-label="Board color">
+      <span class="masks-label">Board color</span>
+      <div class="swatches" id="swatches"></div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="silk-ref" id="hero-roles"></p>
+          <h1 id="hero-name"></h1>
+          <p class="tagline" id="hero-tagline"></p>
+          <p class="intro" id="hero-intro"></p>
+        </div>
+        <figure class="cam">
+          <div class="bezel">
+            <div class="sensor" id="hero-photo"></div>
+            <i class="cam-pad tl"></i><i class="cam-pad tr"></i><i class="cam-pad bl"></i><i class="cam-pad br"></i>
+          </div>
+          <figcaption>CAM1</figcaption>
+        </figure>
+      </div>
+      <nav class="edge" id="edge" aria-label="Sections"></nav>
+    </div>
+  </section>
+
+  <div class="wrap sections" id="sections"></div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <p id="footer-copy"></p>
+    <p class="footer-rev" id="footer-rev"></p>
+  </div>
+</footer>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet-head">
+    <div>
+      <p class="sheet-pn" id="sheet-pn"></p>
+      <h2 id="sheet-title"></h2>
+    </div>
+    <button class="sheet-close" id="sheet-close" type="button" aria-label="Close datasheet">Close</button>
+  </div>
+  <div class="sheet-body" id="sheet-body"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/content.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
