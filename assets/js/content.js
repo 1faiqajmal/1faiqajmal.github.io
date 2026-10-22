@@ -28,6 +28,9 @@ var SITE = {
   // Visitors can switch it with the dots at the top of the page.
   boardColor: "blue",
 
+  // The letter on the gold menu tabs and the section tags (F1, F2, F3...).
+  connectorLetter: "F",
+
   updated: "October 2026",
 
   // Section titles, the words on the gold menu, and the line under each title.
@@ -38,6 +41,7 @@ var SITE = {
     leadership: { menu: "Leadership", title: "Leadership & community", lede: "Programs I'm part of, clubs I help run and teams I coach." },
     awards:     { menu: "Awards",     title: "Awards & learning",      lede: "" },
     sports:     { menu: "Sports",     title: "Sports",                 lede: "" },
+    interests:  { menu: "Interests",  title: "Off the clock",          lede: "What I'm into when I'm not building something." },
     contact:    { menu: "Contact",    title: "Contact",                lede: "The best ways to reach me." }
   },
 
@@ -45,7 +49,8 @@ var SITE = {
   about: [
     "I'm Faiq. I like knowing how things work on the inside, and I like it even more when I can take something apart, fix it and put it back together better than before.",
     "Most of my time goes into hardware. I build and repair computers for people in my community, I'm working on a drone that detects fires, and my Raspberry Pi road ice detector won a bronze medal at BASEF.",
-    "Outside the lab I coach youth soccer at Milton Magic, swim and play soccer, run the AI side of my school's programming club, and lead a youth mental health project through ICNA Relief's Seeds of Leadership program."
+    "Outside the lab I coach youth soccer at Milton Magic, swim and play soccer, run the AI side of my school's programming club, and lead a youth mental health project through ICNA Relief's Seeds of Leadership program.",
+    "When I have free time, I'm usually into cars or playing video games."
   ],
 
   // The "Key specifications" table next to your About text: ["label", "value"]
@@ -55,7 +60,8 @@ var SITE = {
     ["PC builds & repairs", "Since 2024"],
     ["Clubs", "Programming (AI lead), Stock Market (executive)"],
     ["Sports", "Swimming, soccer"],
-    ["Also", "Air Cadets, volunteer photography"]
+    ["Also", "Air Cadets, volunteer photography"],
+    ["Off the clock", "Cars, video games"]
   ],
 
   skills: [
@@ -196,6 +202,15 @@ var SITE = {
     { title: "Soccer", text: "I play on my school's soccer team and won a championship with my summer team." }
   ],
 
+  /* ---------------- OFF THE CLOCK (interests) ----------------
+     Your Spotify player shows up under these once you add your
+     Spotify link in the contact section below.                  */
+  interests: [
+    { title: "Cars", text: "I'm into cars and everything that goes into them." },        // add your favourite or dream car
+    { title: "Video games", text: "I play video games in my free time." }                // add the games you play
+  ],
+  spotifyLabel: "On repeat",   // the small heading above your Spotify player
+
   /* ---------------- CONTACT ----------------
      Fill in any you want to show. Empty ones stay hidden, and if
      they're all empty the Contact section is hidden too.         */
@@ -203,6 +218,8 @@ var SITE = {
     email: "",
     github: "https://github.com/1faiqajmal",
     linkedin: "",     // e.g. "https://www.linkedin.com/in/yourname"
-    instagram: ""     // e.g. a photography account
+    instagram: "",    // e.g. a photography account
+    spotify: ""       // a playlist, song, album or artist link plays right on the page;
+                      // a profile link shows as a button. In Spotify: Share > Copy link.
   }
 };

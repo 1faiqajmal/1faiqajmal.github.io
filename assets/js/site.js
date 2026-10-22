@@ -107,6 +107,7 @@
     if (txt(c.github)) out.push({ label: "GitHub", value: c.github.trim().replace(/^https?:\/\/(www\.)?/, ""), href: c.github.trim() });
     if (txt(c.linkedin)) out.push({ label: "LinkedIn", value: c.linkedin.trim().replace(/^https?:\/\/(www\.)?/, ""), href: c.linkedin.trim() });
     if (txt(c.instagram)) out.push({ label: "Instagram", value: c.instagram.trim().replace(/^https?:\/\/(www\.)?/, ""), href: c.instagram.trim() });
+    if (txt(c.spotify)) out.push({ label: "Spotify", value: c.spotify.trim().replace(/^https?:\/\/(open\.)?/, "").replace(/\?.*$/, ""), href: c.spotify.trim() });
     return out;
   }
 
@@ -117,6 +118,7 @@
     { key: "leadership", show: () => has(S.leadership), render: () => renderBom(S.leadership) },
     { key: "awards", show: () => has(S.awards), render: () => renderHoles(S.awards) },
     { key: "sports", show: () => has(S.sports), render: () => renderHoles(S.sports) },
+    { key: "interests", show: () => has(S.interests) || !!spotifyLink(), render: renderInterests },
     { key: "contact", show: () => contactItems().length > 0, render: renderContact }
   ];
 
@@ -128,7 +130,7 @@
     const visible = SECTIONS.filter((s) => { try { return s.show(); } catch (e) { return false; } });
     visible.forEach((sec, i) => {
       const t = sectionText(sec.key);
-      const ref = "J" + (i + 1);
+      const ref = (txt(S.connectorLetter) || "F").slice(0, 2) + (i + 1);
       const region = el("section", { class: "region", id: sec.key, "aria-labelledby": sec.key + "-title" },
         el("span", { class: "refdes", "aria-hidden": "true", text: ref }),
         el("h2", { id: sec.key + "-title", text: t.title }),
@@ -204,6 +206,30 @@
       el("div", { class: "hole" },
         el("span", { class: "via", "aria-hidden": "true" }),
         el("div", {}, el("h3", { text: a.title }), txt(a.text) ? el("p", { text: a.text }) : null))));
+  }
+
+  /* Spotify: playlists, songs, albums, artists and podcasts can play on the page */
+  function spotifyLink() { return txt((S.contact || {}).spotify); }
+  function spotifyEmbed() {
+    const m = spotifyLink().match(/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?(playlist|album|track|artist|show|episode)\/([A-Za-z0-9]+)/);
+    return m ? "https://open.spotify.com/embed/" + m[1] + "/" + m[2] + "?theme=0" : "";
+  }
+
+  function renderInterests() {
+    const frag = document.createDocumentFragment();
+    if (has(S.interests)) frag.append(renderHoles(S.interests));
+    const src = spotifyEmbed();
+    if (src) {
+      frag.append(el("div", { class: "player" },
+        el("p", { class: "player-label", text: txt(S.spotifyLabel) || "On repeat" }),
+        el("iframe", { src, title: "Spotify player", loading: "lazy", height: "152",
+          allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })));
+    } else if (spotifyLink()) { // a profile link can't play on the page, so it's a button
+      frag.append(el("div", { class: "player" },
+        el("p", { class: "player-label", text: txt(S.spotifyLabel) || "On repeat" }),
+        el("a", { class: "btn", href: spotifyLink(), target: "_blank", rel: "noopener" }, "Open my Spotify")));
+    }
+    return frag;
   }
 
   function renderContact() {
